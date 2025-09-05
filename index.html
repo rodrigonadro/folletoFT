@@ -1,99 +1,247 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Folleto</title>
-</head>
+    <title>Folleto Responsivo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e3a8a;
+            --background-color: #0f172a;
+            --text-color: #ffffff;
+            --page-bg: white;
+            --border-color: rgba(0, 0, 0, 0.11);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: var(--background-color);
+            padding: 1rem;
+        }
+        
+        .radius {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .flipbook {
+            width: 95%;
+            height: auto;
+            max-width: 700px;
+            max-height: 600px;
+        }
+        
+        .flipbook .hard {
+            background: var(--primary-color) !important;
+            color: var(--text-color);
+            font-weight: bold;
+            border: none; 
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .flipbook .page {
+            background: var(--page-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Use contain to prevent distortion */
+            display: block;
+        }
+        
+        .control-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 1.5rem 0;
+            color: var(--text-color);
+            font-size: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .control-bar button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.125rem;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .control-bar button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .control-bar button:disabled {
+            background: #555;
+            cursor: not-allowed;
+            opacity: 0.6;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        #page-info {
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .flipbook {
+                width: 95%;
+            }
+            
+            .control-bar {
+                gap: 10px;
+                padding: 1rem 0;
+            }
+            
+            .control-bar button {
+                padding: 10px 18px;
+                font-size: 1rem;
+            }
+
+            body {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
 <body>
     <div class="radius">
         <div class="flipbook">
-            <div class=""><img src="page_1.jpg" alt="Página 1"></div>
-            <div class=""><img src="page_2.jpg" alt="Página 2"></div>
-            <div class=""><img src="page_3.jpg" alt="Página 3"></div>
-            <div class=""><img src="page_4.jpg" alt="Página 4"></div>
-            <div class=""><img src="page_5.jpg" alt="Página 5"></div>
-            <div class=""><img src="page_6.jpg" alt="Página 6"></div>
-            <div class=""><img src="page_7.jpg" alt="Página 7"></div>
-            <div class=""><img src="page_8.jpg" alt="Página 8"></div>
-            <div class=""><img src="page_9.jpg" alt="Página 9"></div>
-            <div class=""><img src="page_10.jpg" alt="Página 10"></div>
-            <div class=""><img src="page_11.jpg" alt="Página 11"></div>
-            <div class=""><img src="page_12.jpg" alt="Página 12"></div>
-            <div class=""><img src="page_13.jpg" alt="Página 13"></div>
-            <div class=""><img src="page_14.jpg" alt="Página 14"></div>
-            <div class=""><img src="page_15.jpg" alt="Página 15"></div>
-            <div class=""><img src="page_16.jpg" alt="Página 16"></div>
-            <div class=""><img src="page_17.jpg" alt="Página 17"></div>
-            <div class=""><img src="page_18.jpg" alt="Página 18"></div>
-            <div class=""><img src="page_19.jpg" alt="Página 19"></div>
-            <div class=""><img src="page_20.jpg" alt="Página 20"></div>
+            <div><img src="page_1.jpg" alt="Página 1"></div>
+            <div><img src="page_2.jpg" alt="Página 2"></div>
+            <div><img src="page_3.jpg" alt="Página 3"></div>
+            <div><img src="page_4.jpg" alt="Página 4"></div>
+            <div><img src="page_5.jpg" alt="Página 5"></div>
+            <div><img src="page_6.jpg" alt="Página 6"></div>
+            <div><img src="page_7.jpg" alt="Página 7"></div>
+            <div><img src="page_8.jpg" alt="Página 8"></div>
+            <div><img src="page_9.jpg" alt="Página 9"></div>
+            <div><img src="page_10.jpg" alt="Página 10"></div>
+            <div><img src="page_11.jpg" alt="Página 11"></div>
+            <div><img src="page_12.jpg" alt="Página 12"></div>
+            <div><img src="page_13.jpg" alt="Página 13"></div>
+            <div><img src="page_14.jpg" alt="Página 14"></div>
+            <div><img src="page_15.jpg" alt="Página 15"></div>
+            <div><img src="page_16.jpg" alt="Página 16"></div>
+            <div><img src="page_17.jpg" alt="Página 17"></div>
+            <div><img src="page_18.jpg" alt="Página 18"></div>
+            <div><img src="page_19.jpg" alt="Página 19"></div>
+            <div><img src="page_20.jpg" alt="Página 20"></div>
         </div>
         <div class="control-bar">
-            <button id="prev">&#8592;</button>
+            <button id="prev"> &#8592; </button>
             <span id="page-info">1 / 20</span>
-            <button id="next">&#8594;</button>
-            <button id="fullscreen">⛶</button>
+            <button id="next"> &#8594; </button>
+            <button id="fullscreen"> ⛶ </button>
         </div>
     </div>
 
-        <script src="jquery.js"></script>
-        <script src="turn.js"></script>
-        <script>
-            $(".flipbook").turn({
-                autoCenter: true,
-                duration: 1000,
-                width: $(".flipbook").width(),
-                height: $(".flipbook").height()
-            });
-            const totalPages = $(".flipbook").turn("pages");
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Check if the 'turn' function exists before calling it
+            if (typeof $.fn.turn === 'function') {
+                const flipbook = $(".flipbook");
+                const parent = flipbook.parent();
+                const parentWidth = parent.width();
+                
+                // Calculate size based on a fixed aspect ratio for a two-page spread
+                const newWidth = parentWidth;
+                const newHeight = newWidth / 1.5; 
 
-            $("#page-info").text("1 / " + totalPages);
+                flipbook.turn({
+                    autoCenter: true,
+                    duration: 1000,
+                    width: newWidth,
+                    height: newHeight
+                });
 
-            $("#prev").on("click", function () {
-                $(".flipbook").turn("previous");
-            });
-            $("#next").on("click", function () {
-                $(".flipbook").turn("next");
-            });
-            $(".flipbook").bind("turned", function (event, page) {
-                $("#page-info").text(page + " / " + totalPages);
-            });
-            $("#fullscreen").on("click", function () {
-                let elem = document.querySelector(".radius");
-                if (!document.fullscreenElement) {
-                    elem.requestFullscreen().catch(err => {
-                        alert(`Error al activar fullscreen: ${err.message}`);
-                    });
-                } else {
-                    document.exitFullscreen();
-                }
-            });
-            $(document).on("keydown", function (e) {
-                switch (e.key) {
-                    case "ArrowLeft":   
-                        $(".flipbook").turn("previous");
-                        break;
-                    case "ArrowRight": 
-                        $(".flipbook").turn("next");
-                        break;
-                    case "Home":       
-                        $(".flipbook").turn("page", 1);
-                        break;
-                    case "End":         
-                        $(".flipbook").turn("page", totalPages);
-                        break;
-                }
-            });
-            $(window).on("resize", function () {
-                $(".flipbook").turn("size", $(".flipbook").width(), $(".flipbook").height());
-            });
+                const totalPages = flipbook.turn("pages");
+                $("#page-info").text("1 / " + totalPages);
 
-        </script>
+                // Ensure the flipbook resizes when the window does
+                $(window).on("resize", function () {
+                    const newWidth = flipbook.parent().width();
+                    const newHeight = newWidth / 1.5;
+                    flipbook.turn("size", newWidth, newHeight);
+                });
+
+                // Update page info on turning
+                flipbook.bind("turned", function (event, page) {
+                    $("#page-info").text(page + " / " + totalPages);
+                });
+            
+                // Control buttons
+                $("#prev").on("click", function () {
+                    flipbook.turn("previous");
+                });
+                $("#next").on("click", function () {
+                    flipbook.turn("next");
+                });
+                
+                // Fullscreen functionality
+                $("#fullscreen").on("click", function () {
+                    const elem = document.querySelector(".radius");
+                    if (!document.fullscreenElement) {
+                        elem.requestFullscreen().catch(err => {
+                            console.error(`Error al activar el modo de pantalla completa: ${err.message}`);
+                        });
+                    } else {
+                        document.exitFullscreen();
+                    }
+                });
+
+                // Keyboard navigation
+                $(document).on("keydown", function (e) {
+                    switch (e.key) {
+                        case "ArrowLeft":   
+                            flipbook.turn("previous");
+                            break;
+                        case "ArrowRight": 
+                            flipbook.turn("next");
+                            break;
+                    }
+                });
+
+            } else {
+                console.error("Error: The 'turn' function is not loaded. Please check the turn.js script link.");
+            }
+        });
+    </script>
 </body>
-
 </html>
-
