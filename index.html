@@ -45,9 +45,12 @@
         <script src="jquery.js"></script>
         <script src="turn.js"></script>
         <script>
+             var isMobile = window.innerWidth <= 768; 
+             
             $(".flipbook").turn({
                 autoCenter: true,
                 duration: 900,
+                displayMode:isMobile ? "single" : "double",
                 width: $(".flipbook").width(),
                 height: $(".flipbook").height()
             });
