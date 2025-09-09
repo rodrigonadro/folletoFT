@@ -1,0 +1,100 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Promociones Farmatodo</title>
+  	
+	<link id="favicon" rel="shortcut icon" href="farmatodo.png">
+	<link rel="icon" href="farmatodo.png" >
+	<link rel="apple-touch-icon" href="farmatodo.png">
+</head>
+
+<body>
+    <div class="radius">
+        <div class="flipbook">
+            <div class=""><img src="page_1.jpg" alt="Página 1"></div>
+            <div class=""><img src="page_2.jpg" alt="Página 2"></div>
+            <div class=""><img src="page_3.jpg" alt="Página 3"></div>
+            <div class=""><img src="page_4.jpg" alt="Página 4"></div>
+            <div class=""><img src="page_5.jpg" alt="Página 5"></div>
+            <div class=""><img src="page_6.jpg" alt="Página 6"></div>
+            <div class=""><img src="page_7.jpg" alt="Página 7"></div>
+            <div class=""><img src="page_8.jpg" alt="Página 8"></div>
+            <div class=""><img src="page_9.jpg" alt="Página 9"></div>
+            <div class=""><img src="page_10.jpg" alt="Página 10"></div>
+            <div class=""><img src="page_11.jpg" alt="Página 11"></div>
+            <div class=""><img src="page_12.jpg" alt="Página 12"></div>
+            <div class=""><img src="page_13.jpg" alt="Página 13"></div>
+            <div class=""><img src="page_14.jpg" alt="Página 14"></div>
+            <div class=""><img src="page_15.jpg" alt="Página 15"></div>
+            <div class=""><img src="page_16.jpg" alt="Página 16"></div>
+            <div class=""><img src="page_17.jpg" alt="Página 17"></div>
+            <div class=""><img src="page_18.jpg" alt="Página 18"></div>
+            <div class=""><img src="page_19.jpg" alt="Página 19"></div>
+            <div class=""><img src="page_20.jpg" alt="Página 20"></div>
+        </div>
+        <div class="control-bar">
+            <button id="prev">&#8592;</button>
+			<!--button id="fullscreen">⛶</button-->
+            <button id="next">&#8594;</button>
+
+        </div>
+    </div>
+
+        <script src="jquery.js"></script>
+        <script src="turn.js"></script>
+        <script>
+            $(".flipbook").turn({
+                autoCenter: true,
+                duration: 900,
+                width: $(".flipbook").width(),
+                height: $(".flipbook").height()
+            });
+            const totalPages = $(".flipbook").turn("pages");
+
+            $("#page-info").text("1 / " + totalPages);
+
+            $("#prev").on("click", function () {
+                $(".flipbook").turn("previous");
+            });
+            $("#next").on("click", function () {
+                $(".flipbook").turn("next");
+            });
+            $(".flipbook").bind("turned", function (event, page) {
+                $("#page-info").text(page + " / " + totalPages);
+            });
+            $("#fullscreen").on("click", function () {
+                let elem = document.querySelector(".radius");
+                if (!document.fullscreenElement) {
+                    elem.requestFullscreen().catch(err => {
+                        alert(`Error al activar fullscreen: ${err.message}`);
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
+            });
+            $(document).on("keydown", function (e) {
+                switch (e.key) {
+                    case "ArrowLeft":   
+                        $(".flipbook").turn("previous");
+                        break;
+                    case "ArrowRight": 
+                        $(".flipbook").turn("next");
+                        break;
+                    case "Home":       
+                        $(".flipbook").turn("page", 1);
+                        break;
+                    case "End":         
+                        $(".flipbook").turn("page", totalPages);
+                        break;
+                }
+            });
+            $(window).on("resize", function () {
+                $(".flipbook").turn("size", $(".flipbook").width(), $(".flipbook").height());
+            });
+
+        </script>
+</body>
+
+</html>
